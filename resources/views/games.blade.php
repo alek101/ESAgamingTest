@@ -11,7 +11,12 @@
     <a href="/games/store">New Game</a>
 
     @foreach ($games as $game)
-        <div>Game id: {{ $game->id }} Status: {{ $game->hasStarted }} <a href="/armies/index/{{ $game->id  }}">Enter</a></div>
+        <div>Game id: {{ $game->id }} Status: 
+        @if ($game->hasStarted)
+            Game have started.
+        @else
+            Game haven't started yet.
+        @endif <a href="/armies/index/{{ $game->id  }}">Enter</a></div>
     @endforeach
 </body>
 </html>
