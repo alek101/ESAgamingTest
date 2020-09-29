@@ -3,21 +3,21 @@
 ## Installation
 1. Install php and MySql
 https://www.apachefriends.org/download.html
-
-**Install Laravel**
 2. install composer: https://getcomposer.org/download/
-3. composer global require laravel/installer
-
-4. Download app from git
-**Run in cmd folder where app is downloaded from git**
+3. Download app from git
+(Run in cmd)
+4. composer global require laravel/installer
+(Run in cmd folder where app is downloaded from git)
 5. composer install
-
-6. Create database
-7. Create env file and set database name in env file
-
-**Run in cmd folder where app is downloaded from git**
+(turn on browser)
+6. Create database http://localhost/phpmyadmin/index.php
+(go in folder where you downloaded app from git)
+7. Create env file and set database name in env file (if there is none copy from env.example)
+(Run in cmd folder where app is downloaded from git)
 8. php artisan migrate
 9. php artisan serve
+10. http://127.0.0.1:8000
+11. Turn off server in cmd where is runned with control+C on keyboard
 
 
 ## PHP Engineer testing task - Battle Simulator
