@@ -1,23 +1,23 @@
 ## Interview test
 
 ## Installation
-Install php and MySql
+1. Install php and MySql
 https://www.apachefriends.org/download.html
 
 **Install Laravel**
-install composer: https://getcomposer.org/download/
-composer global require laravel/installer
+2. install composer: https://getcomposer.org/download/
+3. composer global require laravel/installer
 
-Download app from git
+4. Download app from git
 **Run in cmd folder where app is downloaded from git**
-composer install
+5. composer install
 
-Create database
-Create env file and set database name in env file
+6. Create database
+7. Create env file and set database name in env file
 
 **Run in cmd folder where app is downloaded from git**
-php artisan migrate
-php artisan serve
+8. php artisan migrate
+9. php artisan serve
 
 
 ## PHP Engineer testing task - Battle Simulator
