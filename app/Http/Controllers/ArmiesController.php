@@ -66,13 +66,13 @@ class ArmiesController extends Controller
 
     public function nextTurn($gameId)
     {
-        BattleSimulator::nextTurn($gameId);
-        return redirect('/armies/index/'.$gameId);
+        $response=BattleSimulator::nextTurn($gameId);
+        return redirect('/armies/index/'.$gameId)->withErrors($response);
     }
 
     public function autoFinish($gameId)
     {
-        BattleSimulator::autoFinish($gameId);
-        return redirect('/armies/index/'.$gameId);
+        $response=BattleSimulator::autoFinish($gameId);
+        return redirect('/armies/index/'.$gameId)->withErrors($response);
     }
 }

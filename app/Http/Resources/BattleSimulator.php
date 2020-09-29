@@ -30,7 +30,7 @@ class BattleSimulator extends JsonResource
                 }
                 else
                 {
-                    return 'error';
+                    return 'You must have at least 5 arimes to start!';
                 }
             }
         }
@@ -38,27 +38,31 @@ class BattleSimulator extends JsonResource
         {
             if($game->hasStarted)
             {
-                echo "Army".$armyList[0]->name."has won";
-                return 'completed';
+                return "Army ".$armyList[0]->name." has won!";
             }
             else
             {
-                return 'error';
+                return 'You must have at least 5 arimes to start!';
             }
         }
 
-        return 'inProgress';
+        return 'You can press next turn!';
     }
 
     public static function autoFinish($gameId)
     {
        $check=BattleSimulator::nextTurn($gameId);
-       if($check=='inProgress')
+       if($check=='You can press next turn!')
        {
-           while($check=='inProgress')
+           while($check=='You can press next turn!')
            {
                $check=BattleSimulator::nextTurn($gameId);
            }
+           return BattleSimulator::nextTurn($gameId);
+       }
+       else
+       {
+           return $check;
        }
     }
 
