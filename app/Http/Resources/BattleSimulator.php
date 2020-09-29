@@ -14,21 +14,52 @@ class BattleSimulator extends JsonResource
         
         $game=ModelsGame::findOrFail($gameId);
 
-        if($game->hasStarted)
+        if($armyList->count()>1)
         {
-            BattleSimulator::combatTurn($armyList);  
-            
+            if($game->hasStarted)
+            {
+                BattleSimulator::combatTurn($armyList);  
+            }
+            else
+            {
+                if($armyList->count()>=5)
+                {
+                    $game->hasStarted=true;
+                    $game->saveOrFail();
+                    BattleSimulator::combatTurn($armyList);  
+                }
+                else
+                {
+                    return 'error';
+                }
+            }
         }
         else
         {
-            if($armyList->count()>=5)
+            if($game->hasStarted)
             {
-                $game->hasStarted=true;
-                $game->saveOrFail();
-                BattleSimulator::combatTurn($armyList);  
+                echo "Army".$armyList[0]->name."has won";
+                return 'completed';
+            }
+            else
+            {
+                return 'error';
             }
         }
-        
+
+        return 'inProgress';
+    }
+
+    public static function autoFinish($gameId)
+    {
+       $check=BattleSimulator::nextTurn($gameId);
+       if($check=='inProgress')
+       {
+           while($check=='inProgress')
+           {
+               $check=BattleSimulator::nextTurn($gameId);
+           }
+       }
     }
 
     public static function combatTurn($armyList)

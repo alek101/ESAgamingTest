@@ -10,7 +10,7 @@
     
     <form action="/armies/store" method="POST">
         @csrf
-        <input type="number" name="gameId" value="{{ $gameId }}" hidden>
+        <input type="number" name="gameId" value="{{ $gameId }}" hidden required>
         Name: <input type="text" name="name" required>
         Number of Units: <input type="number" name="numberOfUnits" required>
         Strategy: 

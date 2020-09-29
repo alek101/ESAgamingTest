@@ -39,8 +39,22 @@ class ArmiesController extends Controller
     {
         $newArmy=new ModelsArmy();
         $newArmy->name=$request->name;
-        $newArmy->numberOfUnits=$request->numberOfUnits;
-        $newArmy->strategy=$request->strategy;
+        if($request->numberOfUnits>=80 and $request->numberOfUnits<=100)
+        {
+            $newArmy->numberOfUnits=$request->numberOfUnits;
+        }
+        else
+        {
+            $newArmy->numberOfUnits=100;
+        }
+        if($request->strategy=='random' or $request->strategy=='weak' or $request->strategy=='strong')
+        {
+            $newArmy->strategy=$request->strategy;
+        }
+        else
+        {
+            $newArmy->strategy='random';
+        }
         $newArmy->gameId=$request->gameId;
         $newArmy->saveOrFail();
         return redirect('/armies/index/'.$request->gameId);
@@ -49,6 +63,12 @@ class ArmiesController extends Controller
     public function nextTurn($gameId)
     {
         BattleSimulator::nextTurn($gameId);
+        return redirect('/armies/index/'.$gameId);
+    }
+
+    public function autoFinish($gameId)
+    {
+        BattleSimulator::autoFinish($gameId);
         return redirect('/armies/index/'.$gameId);
     }
 }

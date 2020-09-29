@@ -30,5 +30,6 @@ Route::prefix('/armies')->group(function()
     Route::get('/create/{id}',[ArmiesController::class, 'create']);
     Route::post('/store',[ArmiesController::class, 'store']);
     Route::get('/nextTurn/{id}',[ArmiesController::class, 'nextTurn']);
+    Route::get('/autoFinish/{id}',[ArmiesController::class, 'autoFinish']);
 });
 

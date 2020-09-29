@@ -10,6 +10,7 @@
     
     <a href="/armies/create/{{ $gameId }}">Add Army</a>
     <a href="/armies/nextTurn/{{ $gameId }}">Next Turn</a>
+    <a href="/armies/autoFinish/{{ $gameId }}">Auto turn</a>
     @foreach ($errors->all() as $error)
             <p class="r_error">{{ $error }}</p>
     @endforeach
