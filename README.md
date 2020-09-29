@@ -1,16 +1,26 @@
 ## Interview test
 
-Install Laravel
-Download from git
-Create database
-Create env file and set database name
-Run in cmd
+## Installation
+Install php and MySql
+https://www.apachefriends.org/download.html
+
+**Install Laravel**
+install composer: https://getcomposer.org/download/
+composer global require laravel/installer
+
+Download app from git
+**Run in cmd folder where app is downloaded from git**
 composer install
+
+Create database
+Create env file and set database name in env file
+
+**Run in cmd folder where app is downloaded from git**
 php artisan migrate
 php artisan serve
 
 
-PHP Engineer testing task - Battle Simulator
+## PHP Engineer testing task - Battle Simulator
 This is a test used to assess the candidates for the PHP Back-End Developer position.
 
 Task description
