@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GamesController;
+use App\Http\Controllers\ArmiesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::prefix('/games')->group(function()
+{
+    Route::get('/index',[GamesController::class, 'index']);
+    Route::get('/store',[GamesController::class, 'store']);
 });
