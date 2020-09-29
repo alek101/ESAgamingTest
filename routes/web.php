@@ -21,6 +21,7 @@ Route::prefix('/games')->group(function()
 {
     Route::get('/index',[GamesController::class, 'index']);
     Route::get('/store',[GamesController::class, 'store']);
+    
 });
 
 Route::prefix('/armies')->group(function()
@@ -28,5 +29,6 @@ Route::prefix('/armies')->group(function()
     Route::get('/index/{id}',[ArmiesController::class, 'index']);
     Route::get('/create/{id}',[ArmiesController::class, 'create']);
     Route::post('/store',[ArmiesController::class, 'store']);
+    Route::get('/nextTurn/{id}',[ArmiesController::class, 'nextTurn']);
 });
 

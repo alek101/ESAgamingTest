@@ -9,6 +9,10 @@
 <body>
     
     <a href="/armies/create/{{ $gameId }}">Add Army</a>
+    <a href="/armies/nextTurn/{{ $gameId }}">Next Turn</a>
+    @foreach ($errors->all() as $error)
+            <p class="r_error">{{ $error }}</p>
+    @endforeach
 
     @foreach ($armies as $army)
         <div>Army id: {{ $army->id }} Name: {{ $army->name }} Units: {{ $army->numberOfUnits }} Strategy: {{ $army->strategy }}</div>
