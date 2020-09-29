@@ -15,7 +15,7 @@ class ArmiesController extends Controller
      */
     public function index($idGame)
     {
-        $armies=ModelsArmy::where('gameId',$idGame)->get()->reverse();
+        $armies=ModelsArmy::where('gameId',$idGame)->where('numberOfUnits','>',0)->get()->reverse();
         return view('armies',['armies'=>$armies,'gameId'=>$idGame]);
     }
 

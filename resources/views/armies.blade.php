@@ -8,9 +8,10 @@
 </head>
 <body>
     
-    <a href="/armies/create/{{ $gameId }}">Add Army</a>
-    <a href="/armies/nextTurn/{{ $gameId }}">Next Turn</a>
-    <a href="/armies/autoFinish/{{ $gameId }}">Auto turn</a>
+    <a href="/armies/create/{{ $gameId }}">Add Army</a> <br>
+    <a href="/armies/nextTurn/{{ $gameId }}">Next Turn</a> <br>
+    <a href="/armies/autoFinish/{{ $gameId }}">Auto turn</a> <br>
+    <a href="/">Back</a> <br>
     @foreach ($errors->all() as $error)
             <p class="r_error">{{ $error }}</p>
     @endforeach
