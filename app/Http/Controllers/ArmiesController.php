@@ -43,6 +43,10 @@ class ArmiesController extends Controller
         {
             $newArmy->numberOfUnits=$request->numberOfUnits;
         }
+        elseif($request->numberOfUnits<80)
+        {
+            $newArmy->numberOfUnits=80;
+        }
         else
         {
             $newArmy->numberOfUnits=100;

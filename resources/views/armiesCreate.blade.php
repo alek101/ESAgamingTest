@@ -8,6 +8,7 @@
 </head>
 <body>
     
+    Number of units must be beetwen 80 and 100. <br>
     <form action="/armies/store" method="POST">
         @csrf
         <input type="number" name="gameId" value="{{ $gameId }}" hidden required>
