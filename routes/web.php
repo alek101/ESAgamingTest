@@ -15,12 +15,18 @@ use App\Http\Controllers\ArmiesController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [GamesController::class, 'index']);
 
 Route::prefix('/games')->group(function()
 {
     Route::get('/index',[GamesController::class, 'index']);
     Route::get('/store',[GamesController::class, 'store']);
 });
+
+Route::prefix('/armies')->group(function()
+{
+    Route::get('/index/{id}',[ArmiesController::class, 'index']);
+    Route::get('/create/{id}',[ArmiesController::class, 'create']);
+    Route::post('/store',[ArmiesController::class, 'store']);
+});
+

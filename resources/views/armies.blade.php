@@ -8,10 +8,10 @@
 </head>
 <body>
     
-    <a href="/games/store">New Game</a>
+    <a href="/armies/create/{{ $gameId }}">Add Army</a>
 
-    @foreach ($games as $game)
-        <div>Game id: {{ $game->id }} Status: {{ $game->hasStarted }} <a href="/armies/index/{{ $game->id  }}">Enter</a></div>
+    @foreach ($armies as $army)
+        <div>Army id: {{ $army->id }} Name: {{ $army->name }} Units: {{ $army->numberOfUnits }} Strategy: {{ $army->strategy }}</div>
     @endforeach
 </body>
 </html>

@@ -37,7 +37,7 @@ class GamesController extends Controller
     public function store(Request $request)
     {
         $newGame=new ModelsGame();
-        $newGame->save();
+        $newGame->saveOrFail();
         return redirect()->back();
     }
 

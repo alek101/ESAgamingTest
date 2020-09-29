@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Army as ModelsArmy;
 
 class ArmiesController extends Controller
 {
@@ -11,9 +12,10 @@ class ArmiesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($idGame)
     {
-        //
+        $armies=ModelsArmy::where('gameId',$idGame)->get()->reverse();
+        return view('armies',['armies'=>$armies,'gameId'=>$idGame]);
     }
 
     /**
@@ -21,9 +23,9 @@ class ArmiesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($gameId)
     {
-        //
+        return view('armiesCreate',['gameId'=>$gameId]);
     }
 
     /**
@@ -34,7 +36,13 @@ class ArmiesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newArmy=new ModelsArmy();
+        $newArmy->name=$request->name;
+        $newArmy->numberOfUnits=$request->numberOfUnits;
+        $newArmy->strategy=$request->strategy;
+        $newArmy->gameId=$request->gameId;
+        $newArmy->saveOrFail();
+        return redirect('/armies/index/'.$request->gameId);
     }
 
     /**
