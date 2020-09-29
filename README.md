@@ -1,61 +1,104 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+## Interview test
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+Install Laravel
+Download from git
+Create database
+Create env file and set database name
+Run in cmd
+composer install
+php artisan migrate
+php artisan serve
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+PHP Engineer testing task - Battle Simulator
+This is a test used to assess the candidates for the PHP Back-End Developer position.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Task description
+-------------------------------
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+The goal of this task is to build an app simulator between 5 and 'n' armies in at most 5 different battles active. The system consists of two functional segments.
 
-## Learning Laravel
+1. REST API for triggering system commands
+2. Battle simulator
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+REST API
+-------------------------------
+The REST API is straightforward. Here is the list of the API Routes.
 
-## Laravel Sponsors
+**Create a Game**
+The API call to create a game and return an ID for the game.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+**Add Army**
+Add the army to the game. This API accepts:
 
-### Premium Partners
+**Name**
+Name of the army
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
+**Units**
+Number of units the army has (80 - 100)
 
-## Contributing
+**Attack strategy**
+Based on the attacking strategy the army chose whom to attack
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+**List games**
+List existing games, their status, units, ids.
 
-## Code of Conduct
+**Run attack**
+The API call to start the game or run an attack. If this is the first time calling this command, it can execute only if there are at least 5 armies. 
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
+Battle simulator
+-----------------------------------------
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Once at least 5 armies have joined, the battle can start. When the start action is called, the armies start to attack.
 
-## License
+**Attack and strategies**
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Random: Attack a random army
+
+Weakest: Attack the army with the lowest number of units
+
+Strongest: Attack the army with the highest number of units
+
+
+Attack chances
+- Not every attack is successful. Army has 1% of success for every alive unit in it.
+
+Attack damage
+- The army always does 0.5 damage per unit, when an attack is successful. If there is only one unit left, the damage is 1.
+
+Received damage
+- For every whole point of received damage from the attacking army, one unit is removed from the attacked army.
+
+Reload time
+-Reload time takes 0.01 seconds per 1 unit in the army.
+
+
+
+The army is dead (defeated) when all units are dead. 
+The battle is over when there is one army standing.
+
+Armies attack one by one. The order is defined in the order of adding the armies.
+
+If the new army is added in between turns, it will be added to the beginning of the order, and in the next turn, the army which was first will now be second and so on.
+
+
+UI
+----------------------
+Create as simple as possible UI Interface. UI Interface is used to create a game, add units to the game, run the battle and show the round status. Please do not run game logic on the front-end.
+Also, add the “autorun” option to the game UI so, after every turn, the game will run automatically, without waiting for the button “run” to be clicked.
+
+Database
+----------------------
+Use MySQL or Postgresql
+
+Framework
+----------------------
+You can use any framework or a custom approach to solve this task.
+
+Conditions
+----------------------
+- On refresh, the game must continue from before refresh.
+- The task must be submitted as a Git URL through this Form
+- Provide Readme.md instructions with how to install and prerequisites.
