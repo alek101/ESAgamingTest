@@ -37,6 +37,12 @@ class ArmiesController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name'=>'required',
+            'numberOfUnits'=>'required|numeric',
+            'strategy'=>'required'
+        ]);
+        
         $newArmy=new ModelsArmy();
         $newArmy->name=$request->name;
         if($request->numberOfUnits>=80 and $request->numberOfUnits<=100)
