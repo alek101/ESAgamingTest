@@ -40,9 +40,10 @@ class ArmiesController extends Controller
         $request->validate([
             'name'=>'required',
             'numberOfUnits'=>'required|numeric',
-            'strategy'=>'required'
+            'strategy'=>'required',
+            'gameId'=>'required'
         ]);
-        
+
         $newArmy=new ModelsArmy();
         $newArmy->name=$request->name;
         if($request->numberOfUnits>=80 and $request->numberOfUnits<=100)
