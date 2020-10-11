@@ -38,19 +38,18 @@ class ArmiesController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validatedAttributes=$request->validate([
             'name'=>'required',
             'numberOfUnits'=>'required|numeric',
             'strategy'=>'required',
             'gameId'=>'required'
         ]);
 
-        $newArmy=new ModelsArmy();
-        $newArmy->name=$request->name;
-        $newArmy->numberOfUnits=Corrector::correctArmySize($request->numberOfUnits);
-        $newArmy->strategy=Corrector::correctStrategy($request->strategy);
-        $newArmy->gameId=$request->gameId;
-        $newArmy->saveOrFail();
+        $validatedAttributes['numberOfUnits']=Corrector::correctArmySize($validatedAttributes['numberOfUnits']);
+        $validatedAttributes['strategy']=Corrector::correctStrategy($validatedAttributes['strategy']);
+
+        ModelsArmy::create($validatedAttributes);
+
         return redirect('/armies/index/'.$request->gameId);
     }
 

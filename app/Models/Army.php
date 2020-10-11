@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Army extends Model
 {
     use HasFactory;
+
+    protected $fillable=['name','numberOfUnits','strategy','gameId'];
+
 }
